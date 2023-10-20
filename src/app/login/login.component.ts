@@ -17,7 +17,7 @@ export class LoginComponent {
   {
     if(this.username==='in28minutes' && this.password==='dummy')
     {
-      this.router.navigate(['welcome']);
+      this.router.navigate(['welcome', this.username]);
       this.invalidLogin=false;
     }
     else {
