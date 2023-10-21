@@ -1,4 +1,15 @@
 <h1><p>Welcome {{name}}!</p></h1>
+
+<div class="container">
+
+
 Welcome to our App!!
 
 You can manage your todos <a class="btn btn-primary" routerLink="/todos">Here</a> 
+
+</div>
+
+<div class="container">
+    Click here to get Customized message 
+    <button (click)="getWelComeMessage()" class="btn btn-success" >Get WelCome message</button>
+</div>
