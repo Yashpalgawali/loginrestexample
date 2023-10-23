@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { WelcomeDataService } from '../Services/data/welcome-data.service';
+import { HelloWorldBean, WelcomeDataService } from '../Services/data/welcome-data.service';
 
 @Component({
   selector: 'app-welcome',
@@ -10,6 +10,7 @@ import { WelcomeDataService } from '../Services/data/welcome-data.service';
 export class WelcomeComponent implements OnInit {
   message = "Welcome Message"
   name=''
+  welcomeMessageFromService !: string
   constructor(private route :ActivatedRoute,private welcomedataserv : WelcomeDataService) { }
   
   ngOnInit(): void {
@@ -27,8 +28,12 @@ export class WelcomeComponent implements OnInit {
   )
   console.log('Last Line of call')
 }
- handleSuccessfulResponse(response: any) {
-  console.log(response)
+  handleErrorResponse(err: any) {
+    throw new Error('Method not implemented.');
+  }
+ handleSuccessfulResponse(response: HelloWorldBean) {
+  this.welcomeMessageFromService = response.message
+  // console.log(response.message)
 }
 
 }

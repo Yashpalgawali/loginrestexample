@@ -13,3 +13,7 @@ You can manage your todos <a class="btn btn-primary" routerLink="/todos">Here</a
     Click here to get Customized message 
     <button (click)="getWelComeMessage()" class="btn btn-success" >Get WelCome message</button>
 </div>
+<div class="container" *ngIf="welcomeMessageFromService">
+    <h2>Your customized Message</h2>
+    {{welcomeMessageFromService}}
+</div>
