@@ -14,12 +14,21 @@ export class WelcomeComponent implements OnInit {
   
   ngOnInit(): void {
     // console.log(this.message);
-    // console.log(this.route.snapshot.params['name'])
+    console.log(this.route.snapshot.params['name'])
     this.name=this.route.snapshot.params['name']
+    
   }
   
   getWelComeMessage()
   {
-    this.welcomedataserv.executeHelloWorldBeanService()
-  }
+  //  console.log(this.welcomedataserv.executeHelloWorldBeanService())
+  this.welcomedataserv.executeHelloWorldBeanService().subscribe(
+    response => this.handleSuccessfulResponse(response)
+  )
+  console.log('Last Line of call')
+}
+ handleSuccessfulResponse(response: any) {
+  console.log(response)
+}
+
 }

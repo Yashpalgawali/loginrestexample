@@ -18,9 +18,9 @@ export class LoginComponent {
   {
     if(this.hardauth.authenticate(this.username,this.password))
     {
-      this.router.navigate(['welcome', this.username]);
+      this.router.navigate(['welcome', 'admin']);
       this.invalidLogin=false;
-    }
+    } 
     else {
       this.invalidLogin = true;
     }
