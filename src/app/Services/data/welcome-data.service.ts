@@ -9,11 +9,17 @@ export class WelcomeDataService {
  constructor(private http : HttpClient) { }
 
  executeHelloWorldBeanService() {
- return this.http.get<HelloWorldBean>('http://localhost:5454/hello-world-bean');
-  
-  console.log('Hello World Bean Service');
+  return this.http.get<HelloWorldBean>('http://localhost:5454/hello-world-bean');
 
- }
+console.log('Hello World Bean Service');
+}
+
+executeHelloWorldBeanServiceWithPathVariable(name : any) {
+  return this.http.get<HelloWorldBean>('http://localhost:5454/hello-world-bean/'+`${name}`);
+
+console.log('Hello World Bean Service');
+}
+
 }
 
 export class HelloWorldBean{

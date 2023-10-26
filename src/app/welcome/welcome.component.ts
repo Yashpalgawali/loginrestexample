@@ -14,7 +14,7 @@ export class WelcomeComponent implements OnInit {
   constructor(private route :ActivatedRoute,private welcomedataserv : WelcomeDataService) { }
   
   ngOnInit(): void {
-    // console.log(this.message);
+    
     console.log(this.route.snapshot.params['name'])
     this.name=this.route.snapshot.params['name']
     
@@ -22,18 +22,33 @@ export class WelcomeComponent implements OnInit {
   
   getWelComeMessage()
   {
-  //  console.log(this.welcomedataserv.executeHelloWorldBeanService())
-  this.welcomedataserv.executeHelloWorldBeanService().subscribe(
-    response => this.handleSuccessfulResponse(response)
+    this.welcomedataserv.executeHelloWorldBeanService().subscribe(
+    response => this.handleSuccessfulResponse(response),
+    error => this.handleErrorResponse(error)
   )
   console.log('Last Line of call')
-}
-  handleErrorResponse(err: any) {
-    throw new Error('Method not implemented.');
   }
+
+
+  getWelComeMessageWithPathVariable()
+  {
+    this.welcomedataserv.executeHelloWorldBeanServiceWithPathVariable(this.name).subscribe(
+    response => this.handleSuccessfulResponse(response),
+    error    => this.handleErrorResponse(error)
+  )
+  console.log('Last Line of call')
+  }
+
+
  handleSuccessfulResponse(response: HelloWorldBean) {
   this.welcomeMessageFromService = response.message
   // console.log(response.message)
+}
+
+handleErrorResponse(err: any) {
+  console.log(err.error.message)
+  this.welcomeMessageFromService =err.error.message
+ 
 }
 
 }
