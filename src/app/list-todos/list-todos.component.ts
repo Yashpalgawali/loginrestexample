@@ -42,6 +42,10 @@ message : any
    })
   }
   
+  addTodo() {
+    this.router.navigate(['todos',-1])
+  }
+
   deleteTodo(id :number)
   {
     alert("todo = "+id)
