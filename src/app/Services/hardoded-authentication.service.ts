@@ -16,15 +16,17 @@ export class HardodedAuthenticationService {
     }
     else {
         return false
-    }
+    } 
   }
   isUserLoggedIn()
   {
     let user = sessionStorage.getItem('authenticatedUser')
+    
     return !(user===null)
   }
 
   logout() {
     sessionStorage.removeItem('authenticatedUser')
+    sessionStorage.removeItem('token')
   }
 }

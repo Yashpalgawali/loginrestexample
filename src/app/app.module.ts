@@ -34,9 +34,7 @@ import { BasicAuthenticationService } from './Services/basic-authentication.serv
     FormsModule,
     HttpClientModule
   ],
-  providers: [//{
-    //provide : HTTP_INTERCEPTORS , useClass : HttpInterceptorBasicAuthService, multi : true
-  //}
+  providers: [{ provide : HTTP_INTERCEPTORS , useClass : HttpInterceptorBasicAuthService, multi : true }
   ],
   bootstrap: [AppComponent]
 })

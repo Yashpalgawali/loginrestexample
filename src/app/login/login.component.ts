@@ -15,17 +15,17 @@ export class LoginComponent {
   invalidLogin = false;
   constructor (private router : Router,private hardauth : HardodedAuthenticationService,private basicauthserv : BasicAuthenticationService) { } 
 
-  handlelogin()
-  {
-    if(this.hardauth.authenticate(this.username,this.password))
-    {
-      this.router.navigate(['welcome', 'admin']);
-      this.invalidLogin=false;
-    } 
-    else {
-      this.invalidLogin = true;
-    }
-  }
+  // handlelogin()
+  // {
+  //   if(this.hardauth.authenticate(this.username,this.password))
+  //   {
+  //     this.router.navigate(['welcome', 'admin']);
+  //     this.invalidLogin=false;
+  //   } 
+  //   else {
+  //     this.invalidLogin = true;
+  //   }
+  // }
 
   handleBasicAuthLogin()
   {
@@ -38,17 +38,15 @@ export class LoginComponent {
         error=> {
           console.log(error)
           this.invalidLogin=true
-        }
-    )
+        })
 
-
-    if(this.basicauthserv.executeAuthenticationService(this.username,this.password) )
-    {
-      this.router.navigate(['welcome', 'admin']);
-      this.invalidLogin=false;
-    } 
-    else {
-      this.invalidLogin = true;
-    }
+    // if(this.basicauthserv.executeAuthenticationService(this.username,this.password) )
+    // {
+    //   this.router.navigate(['welcome', 'admin']);
+    //   this.invalidLogin=false;
+    // } 
+    // else {
+    //   this.invalidLogin = true;
+    // }
   }
 }

@@ -29,16 +29,15 @@ createBasicAuthenticationHttpHeader()
 }
 
 executeHelloWorldBeanServiceWithPathVariable(name : any) {
-  let basicAuthHeaderString  = this.createBasicAuthenticationHttpHeader()
+  // let basicAuthHeaderString  = this.createBasicAuthenticationHttpHeader()
+  // let headers = new HttpHeaders({
+  //   Authorization : basicAuthHeaderString
+  // })
+ // return this.http.get<HelloWorldBean>('http://localhost:5454/hello-world-bean/'+`${name}`,{ headers : headers});
+  return this.http.get<HelloWorldBean>('http://localhost:5454/hello-world-bean/'+`${name}`);
 
-  let headers = new HttpHeaders({
-    Authorization : basicAuthHeaderString
-  })
-  return this.http.get<HelloWorldBean>('http://localhost:5454/hello-world-bean/'+`${name}`,{ headers : headers});
-
-console.log('Hello World Bean Service');
 }
-
+ 
 }
 
 export class HelloWorldBean{
