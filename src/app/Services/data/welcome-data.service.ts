@@ -41,5 +41,5 @@ executeHelloWorldBeanServiceWithPathVariable(name : any) {
 }
 
 export class HelloWorldBean{
-  constructor (public message : string) { } 
+    constructor (public message : string) { } 
 }

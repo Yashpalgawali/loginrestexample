@@ -4,8 +4,6 @@ import { HelloWorldBean } from './data/welcome-data.service';
 import { map } from 'rxjs';
 import { AuthenticationBean } from '../AuthenticationBean';
 
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -34,18 +32,16 @@ export class BasicAuthenticationService {
 // }
 
 executeAuthenticationService(username : string,password : string ) {
- // alert('Inside executeAuthenticationService() Username = '+username+'\n Password = '+password)
   let basicAuthHeaderString = 'Basic '+window.btoa(username +':' + password)
   let headers = new HttpHeaders({
         Authorization : basicAuthHeaderString
   })
-  alert("Token is = "+basicAuthHeaderString)
+  
+  sessionStorage.setItem('token',basicAuthHeaderString)
   return this.http.get<AuthenticationBean>('http://localhost:5454/basicauth/',{ headers : headers})
                                                                                 .pipe(map(data=>{
                                                                                   sessionStorage.setItem('authenticatedUser',username)
                                                                                   sessionStorage.setItem('token',basicAuthHeaderString)
-                                                                                  alert("After hitting the backend \n Token = "+sessionStorage.getItem('token')+"\n User ="+sessionStorage.getItem('authenticatedUser'))
-                                                                                  
                                                                                   return data
                                                                             }));
 console.log('Hello World Bean Service');
@@ -58,13 +54,12 @@ getAuthenticatedUser()
 
 getAuthenticatedToken()
 {
-  let arra:string[] =['0'];
   if(this.getAuthenticatedUser())
   {
     return sessionStorage.getItem('token');
   }
   else
-   return arra;
+   return 
 }
   isUserLoggedIn()
   {

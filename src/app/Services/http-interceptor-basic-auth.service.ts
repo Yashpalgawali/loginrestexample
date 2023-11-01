@@ -14,14 +14,14 @@ export class HttpInterceptorBasicAuthService implements HttpInterceptor{
     // let password = 'admin'
     // let basicAuthHeaderString = 'Basic '+window.btoa(username +':'+ password)
    
-    // alert("inside http Interceptor\n Token from basic-auth-service = "+this.basicauthserv.getAuthenticatedToken())
-    let basicAuthHeaderString = this.basicauthserv.getAuthenticatedToken();
-   
+    
+    //let basicAuthHeaderString = this.basicauthserv.getAuthenticatedToken();
+    let basicAuthHeaderString = sessionStorage.getItem('token');
     let username = this.basicauthserv.getAuthenticatedUser();
-
+   
     request = request.clone({
       setHeaders : {
-            Authorization : basicAuthHeaderString
+            Authorization : `${basicAuthHeaderString}`
       }
     })
 
